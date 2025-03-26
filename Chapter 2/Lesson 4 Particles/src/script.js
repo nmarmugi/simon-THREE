@@ -18,7 +18,11 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-const particlesTexture = textureLoader.load('/textures/particles/2.png');
+const particlesTexture = textureLoader.load('/textures/particles/1.png');
+// const earthTexture = textureLoader.load('/textures/planets/red_mud_stones_diff_1k.jpg');
+// earthTexture.colorSpace = THREE.SRGBColorSpace;
+// const moonTexture = textureLoader.load('/textures/planets/red_mud_stones_disp_1k.png');
+// moonTexture.colorSpace = THREE.SRGBColorSpace;
 
 /**
  * Particles
@@ -66,6 +70,32 @@ scene.add(particles);
 // const cubeMaterial = new THREE.MeshBasicMaterial();
 // const cube = new THREE.Mesh(cubeGometry, cubeMaterial);
 // scene.add(cube);
+
+// Sun
+// const sun = new THREE.Mesh(
+//     new THREE.SphereGeometry(1, 32, 32),
+//     new THREE.MeshBasicMaterial({
+//         color: '#FF8000',
+//         map: earthTexture
+//     })
+// );
+// scene.add(sun);
+
+// const groupEarth = new THREE.Group();
+
+// const earth = new THREE.Mesh(
+//     new THREE.SphereGeometry(0.25, 32, 32),
+//     new THREE.MeshBasicMaterial()
+// );
+// const moon = new THREE.Mesh(
+//     new THREE.SphereGeometry(0.10, 32, 32),
+//     new THREE.MeshBasicMaterial({
+//         map: moonTexture
+//     })
+// );
+// groupEarth.add(earth, moon);
+
+// scene.add(groupEarth);
 
 /**
  * Sizes
@@ -130,6 +160,10 @@ const tick = () =>
     }
 
     particlesGeometry.attributes.position.needsUpdate = true;
+    // groupEarth.position.x = Math.cos(elapsedTime * 0.02) * 4;
+    // groupEarth.position.z = Math.sin(elapsedTime * 0.02) * 2;
+    // moon.position.x = Math.cos(elapsedTime) * 0.5;
+    // moon.position.z = Math.sin(elapsedTime) * 0.5;
 
     // Update controls
     controls.update()
